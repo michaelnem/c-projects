@@ -30,7 +30,7 @@ int main()
 
     int winState = game(playerChoice, computerChoice); // -1 tie, 0 computer win, 1 player
     printf("\n");
-    if (winState == -1)
+    if (winState == 0)
     {
         printf("A Tie!");
     }
@@ -50,15 +50,15 @@ int main()
 
 int game(int player, int computer)
 {
-    if (player == computer)
-    {
-        return -1;
+    if (player == computer) {
+        return 0;
+    } else if ((player - computer + 3) % 3 == 1) {
+        // player wins
+        return 1;
+    } else {
+        // computer wins
+        return 2;
     }
-    else if (player == 1 && computer == 3 || player == 2 && computer == 1 || player == 3 && computer == 1)
-    {
-        return 1; // player win
-    }
-    return 0;
 }
 
 char *choiceToGameMove(int choice)
